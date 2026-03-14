@@ -1,7 +1,7 @@
-PHONY: build
+PHONY: build run
 
 build: 
 	riscv64-linux-gnu-as -o main.o main.s && riscv64-linux-gnu-ld -o main.bin main.o
 
-run: 
+run: build
 	qemu-riscv64 ./main.bin
