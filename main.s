@@ -1,3 +1,5 @@
+.include "src/include/function.s"
+
 .data 
 turn: .word 0 
 

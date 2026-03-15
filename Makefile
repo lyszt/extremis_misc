@@ -1,7 +1,7 @@
 AS = riscv32-elf-as 
 LD = riscv32-elf-ld
 
-SRCS = $(shell find src -name "*.s")
+SRCS = $(shell find src -name "*.s" -not -path "*/include/*")
 OBJS = $(patsubst src/%.s, build/%.o, $(SRCS))
 
 .PHONY: build run
