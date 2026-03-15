@@ -11,6 +11,6 @@ _start:
   call run_chapter_1 
 
 
-  li a7, 10
+  li a7, 93
   ecall
   
