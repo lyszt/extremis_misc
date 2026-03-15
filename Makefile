@@ -1,7 +1,17 @@
-PHONY: build run
+AS = riscv32-elf-as 
+LD = riscv32-elf-ld
 
-build: 
-	riscv64-linux-gnu-as -o main.o main.s && riscv64-linux-gnu-ld -o main.bin main.o
+SRCS = $(shell find src -name "*.s")
+OBJS = $(patsubst src/%.s, build/%.o, $(SRCS))
+
+.PHONY: build run
+
+build: $(OBJS)
+	$(LD) -v -o main.bin $(OBJS)
+
+build/%.o: src/%.s
+	@mkdir -p $(dir $@)
+	$(AS) -v -o $@ $<
 
 run: build
-	qemu-riscv64 ./main.bin
+	qemu-riscv32 ./main.bin
