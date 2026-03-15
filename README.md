@@ -2,7 +2,7 @@
 
 A text-based RPG written in RISC-V 32-bit assembly, simulated via QEMU.
 
-> "The universe decided it didn't want me doing anything better, like going on dates."
+> "The universe decided it didn't want me doing anything better, like maybe getting a life."
 
 ## Dependencies
 
