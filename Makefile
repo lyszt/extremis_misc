@@ -20,3 +20,4 @@ run: build
 
 debug:
 	qemu-riscv32 -strace ./main.bin 2>&1 | head -30
+	riscv32-elf-objdump -s -j .data build/dialogue/main.o

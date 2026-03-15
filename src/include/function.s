@@ -1,6 +1,14 @@
 .ifndef FUNCTION_S
 .set FUNCTION_S, 1
 
+.macro defstr name, text
+\name:
+    .word \name\()_end - \name\()_start
+\name\()_start:
+    .asciz "\text"
+\name\()_end:
+.endm
+
 .macro startF
     addi sp, sp, -16
     sw   ra, 12(sp)
