@@ -5,7 +5,7 @@
 run_chapter_1:
     startF
     la  a0, chapter_1_strings
-    li  a1, 3
+    li  a1, 4
     call printl
     endF
     ret
