@@ -16,7 +16,7 @@ build/main.o: main.s
 	$(AS) -v -o $@ $<
 	
 run: build
-	qemu-riscv32 ./main.bin || true
+	qemu-riscv32 ./main.bin
 
 debug:
 	qemu-riscv32 -strace ./main.bin 2>&1 | head -30
