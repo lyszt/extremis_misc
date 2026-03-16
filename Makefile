@@ -1,4 +1,4 @@
-AS = riscv32-elf-as 
+AS = riscv32-elf-as -mno-relax
 LD = riscv32-elf-ld
 
 SRCS = $(shell find src -name "*.s" -not -path "*/include/*")
@@ -18,6 +18,7 @@ build/main.o: main.s
 run: build
 	qemu-riscv32 ./main.bin
 
-debug:
+debug: build 
 	qemu-riscv32 -strace ./main.bin 2>&1 | head -30
+	qemu-riscv32 -d in_asm,cpu_reset,int,exec ./main.bin 2>&1 | tail -60
 	riscv32-elf-objdump -s -j .data build/dialogue/main.o

@@ -13,6 +13,10 @@ printl:
   # a1 = number of strings
   mv s0, a0          # s0 = current table entry
   mv s1, a1          # s1 = count
+
+  la a0, box_top
+  call print 
+
   li s2, 0           # s2 = index
 printl_loop:
   lw t0, 0(s0)       # t0 = address of defstr (points to length word)
@@ -26,5 +30,8 @@ printl_loop:
   beq s2, s1, printl_end
   j printl_loop
 printl_end:
+  la a0, box_bot
+  call print 
+
   endF
   ret
